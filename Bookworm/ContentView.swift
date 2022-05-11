@@ -16,20 +16,40 @@ struct ContentView: View {
 	
     var body: some View {
 		NavigationView {
-			Text("Count is: \(books.count)")
-				.navigationTitle("Bookworm")
-				.toolbar {
-					ToolbarItem(placement: .navigationBarTrailing) {
-						Button {
-							showingAddBookScreen.toggle()
-						} label: {
-							Label("Add Book", systemImage: "plus")
+			List {
+				ForEach(books, id: \.self) { book in
+					NavigationLink {
+						
+					} label: {
+						HStack {
+							EmojiRatingView(rating: book.rating)
+								.font(.largeTitle)
+							VStack(alignment: .leading) {
+								Text(book.title ?? "Unknown title")
+									.font(.headline)
+								
+								Text(book.author ?? "Unknown author")
+									.foregroundColor(.secondary)
+								
+							}
 						}
 					}
+					
 				}
-				.sheet(isPresented: $showingAddBookScreen) {
-					AddBookView()
+			}
+			.navigationTitle("Bookworm")
+			.toolbar {
+				ToolbarItem(placement: .navigationBarTrailing) {
+					Button {
+						showingAddBookScreen.toggle()
+					} label: {
+						Label("Add Book", systemImage: "plus")
+					}
 				}
+			}
+			.sheet(isPresented: $showingAddBookScreen) {
+				AddBookView()
+			}
 		}
     }
 }
