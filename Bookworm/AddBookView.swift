@@ -14,7 +14,7 @@ struct AddBookView: View {
 	@State private var title = ""
 	@State private var author = ""
 	@State private var rating = 3
-	@State private var genre = ""
+	@State private var genre = "Fantasy"
 	@State private var review = ""
 	
 	let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
@@ -48,17 +48,28 @@ struct AddBookView: View {
 						newBook.genre = genre
 						newBook.rating = Int16(rating)
 						newBook.review = review
+						newBook.date = Date.now
 						
 						try? moc.save()
 						
 						dismiss()
-						
 					}
+					.disabled(!areTextFieldsValid())
 				}
 			}
 			.navigationTitle("Add Book")
 		}
     }
+	
+	private func areTextFieldsValid() -> Bool {
+		if let _ = title.first(where: { $0 != " " }),
+			let _ = author.first(where: { $0 != " " }),
+			let _ = review.first(where: { $0 != " " }) {
+				return true
+		} else {
+			return false
+		}
+	}
 }
 
 struct AddBookView_Previews: PreviewProvider {
