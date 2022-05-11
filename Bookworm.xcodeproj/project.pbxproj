@@ -61,10 +61,10 @@
 			children = (
 				1716D217282A9B2D0063E2AD /* BookwormApp.swift */,
 				1716D219282A9B2D0063E2AD /* ContentView.swift */,
-				1716D225282A9B4E0063E2AD /* Bookworm.xcdatamodeld */,
-				1716D22A282AA3960063E2AD /* AddBookView.swift */,
 				1716D22C282AA8F90063E2AD /* RatingView.swift */,
+				1716D22A282AA3960063E2AD /* AddBookView.swift */,
 				1716D228282A9B9A0063E2AD /* DataController.swift */,
+				1716D225282A9B4E0063E2AD /* Bookworm.xcdatamodeld */,
 				1716D21B282A9B2E0063E2AD /* Assets.xcassets */,
 				1716D21D282A9B2E0063E2AD /* Preview Content */,
 			);
